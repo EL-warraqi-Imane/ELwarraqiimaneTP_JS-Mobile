@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reading Tracker</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- En-tête -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">📚 Book Reading Tracker</h1>
+            <p class="text-gray-600">Suivez votre progression de lecture</p>
+        </header>
+
+        <!-- Statistiques globales -->
+        <div id="global-stats" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">📊 Statistiques Globales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                <div class="stat-card">
+                    <div class="text-3xl font-bold text-blue-600" id="total-books">0</div>
+                    <div class="text-gray-600">Livres total</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-3xl font-bold text-green-600" id="books-read">0</div>
+                    <div class="text-gray-600">Livres lus</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-3xl font-bold text-purple-600" id="total-pages">0</div>
+                    <div class="text-gray-600">Pages totales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-3xl font-bold text-orange-600" id="progress-percentage">0%</div>
+                    <div class="text-gray-600">Progression globale</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Formulaire d'ajout -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                    <h2 class="text-2xl font-semibold mb-4">➕ Ajouter un Livre</h2>
+                    <form id="book-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Titre</label>
+                            <input type="text" name="title" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Auteur</label>
+                            <input type="text" name="author" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Pages totales</label>
+                                <input type="number" name="numberOfPages" required 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Pages lues</label>
+                                <input type="number" name="pagesRead" required 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
+                            <select name="status" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="Want to read">Want to read</option>
+                                <option value="Currently reading">Currently reading</option>
+                                <option value="Read">Read</option>
+                                <option value="Re-read">Re-read</option>
+                                <option value="DNF">DNF</option>
+                                <option value="Returned Unread">Returned Unread</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Format</label>
+                            <select name="format" required 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="Print">Print</option>
+                                <option value="PDF">PDF</option>
+                                <option value="Ebook">Ebook</option>
+                                <option value="AudioBook">AudioBook</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Prix (€)</label>
+                            <input type="number" step="0.01" name="price" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Suggéré par</label>
+                            <input type="text" name="suggestedBy" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+                            Ajouter le Livre
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Liste des livres -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-semibold mb-4">📖 Mes Livres</h2>
+                    <div id="books-list" class="space-y-4">
+                        <!-- Les livres seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "book-tracker",
+  "version": "1.0.0",
+  "description": "Book reading tracker application",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "tailwind:build": "tailwindcss -i ./src/public/input.css -o ./src/public/style.css --watch"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "@types/express": "^4.17.17",
+    "typescript": "^5.1.6",
+    "undici-types": "^5.26.0"
+  }
+}

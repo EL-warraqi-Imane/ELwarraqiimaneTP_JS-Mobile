@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Pokémon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Combat Pokémon</h1>
+        </header>
+
+        <!-- Écran de sélection -->
+        <div id="selection-screen" class="screen active">
+            <h2>Choisis ton Pokémon</h2>
+            <div class="search-container">
+                <input type="text" id="pokemon-search" placeholder="Nom du Pokémon (ex: pikachu, charizard)">
+                <button onclick="searchPokemon()">Rechercher</button>
+            </div>
+            <div id="pokemon-result" class="pokemon-card"></div>
+            <button id="start-game" onclick="startGame()" disabled>Commencer le combat</button>
+        </div>
+
+        <!-- Écran de combat -->
+        <div id="battle-screen" class="screen">
+            <div class="battle-field">
+                <!-- Pokémon ennemi -->
+                <div class="pokemon enemy">
+                    <img id="enemy-sprite" src="" alt="Pokémon ennemi">
+                    <div class="pokemon-info">
+                        <h3 id="enemy-name"></h3>
+                        <div class="health-bar">
+                            <div id="enemy-health" class="health"></div>
+                        </div>
+                        <span id="enemy-hp">300/300 PV</span>
+                    </div>
+                </div>
+
+                <!-- Pokémon joueur -->
+                <div class="pokemon player">
+                    <img id="player-sprite" src="" alt="Ton Pokémon">
+                    <div class="pokemon-info">
+                        <h3 id="player-name"></h3>
+                        <div class="health-bar">
+                            <div id="player-health" class="health"></div>
+                        </div>
+                        <span id="player-hp">300/300 PV</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="battle-actions">
+                <div id="battle-log"></div>
+                <div class="moves-container">
+                    <h3>Attaques :</h3>
+                    <div id="moves-list" class="moves-grid"></div>
+                </div>
+            </div>
+
+            <button onclick="resetGame()">Nouveau combat</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
