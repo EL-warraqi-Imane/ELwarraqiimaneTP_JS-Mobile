@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .container.mx-auto.p-4
+    h1.text-2xl.font-bold.mb-4 Liste des livres
+    a.bg-blue-500.text-white.p-2.rounded(href="/logout") Déconnexion
+    .grid.grid-cols-3.gap-4.mt-4
+      each book in books
+        .bg-white.p-4.rounded.shadow
+          h2.text-xl.font-bold= book.title
+          p.text-gray-600= book.author

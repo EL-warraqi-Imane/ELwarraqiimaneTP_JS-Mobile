@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .min-h-screen.flex.items-center.justify-center.bg-gray-50
+    .max-w-md.w-full
+      h2.text-3xl.font-bold.mb-6.text-center Connexion
+      form(action="/login" method="POST")
+        .mb-4
+          label.block.text-gray-700 Nom d'utilisateur
+          input.w-full.p-2.border.rounded(type="text" name="username" required)
+        .mb-4
+          label.block.text-gray-700 Mot de passe
+          input.w-full.p-2.border.rounded(type="password" name="password" required)
+        button.w-full.bg-blue-500.text-white.p-2.rounded(type="submit") Se connecter
+      a.block.text-center.mt-4.text-blue-500(href="/register") Pas de compte ? Inscrivez-vous
